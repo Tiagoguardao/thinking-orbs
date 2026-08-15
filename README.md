@@ -6,11 +6,28 @@ Dotted thought-orb loading indicators for AI & agent UIs. Nine hand-tuned animat
 
 ## Install
 
+### React
+
 ```bash
 npm install thinking-orbs
 ```
 
+### SwiftUI
+
+Add this repository as a Swift package after the `v0.4.0` native release is available:
+
+```swift
+.package(
+    url: "https://github.com/Tiagoguardao/thinking-orbs.git",
+    exact: "0.4.0"
+)
+```
+
+The `ThinkingOrbsKit` library supports iOS 15 and macOS 13. It has no runtime dependencies and does not include React, JavaScript, Skia, Metal, or a web view.
+
 ## Quick start
+
+### React
 
 ```tsx
 import { ThinkingOrb } from 'thinking-orbs';
@@ -19,6 +36,32 @@ function Status() {
   return <ThinkingOrb state="searching" size={64} />;
 }
 ```
+
+### SwiftUI
+
+```swift
+import ThinkingOrbsKit
+
+struct SearchStatus: View {
+    var body: some View {
+        ThinkingOrb(state: .searching, size: .px64)
+    }
+}
+```
+
+SwiftUI also supports `theme`, `speed`, `paused`, and an explicit `renderTime`. Use `renderTime` for stable screenshots and widget frames:
+
+```swift
+ThinkingOrb(
+    state: .composing,
+    size: .px20,
+    theme: .dark,
+    paused: true,
+    renderTime: 0.6
+)
+```
+
+Automatic theme changes, Reduce Motion, background-scene pausing, and per-state accessibility labels are built in.
 
 ## States
 
